@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<?php
+session_start();
+if (isset($_POST['bann_form'])) {$_SESSION['bann_form']=$_POST['bann_form'];}
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<head>
+	   <?php header( 'content-type: text/html; charset=utf-8' ); ?>
+	<title>TJM Delafontaine - Découverte de la Suisse en russe, excursions et animations</title>
+	<meta name="description" content="TJM - TJM est une entreprise familiale, née dans le but de faire découvrir la Suisse aux touristes russophones." />
+	<meta name="keywords" content="Suisse, excursions, russe" />
+	<meta name="robots" content="index" />
+	<meta name="REVISIT-AFTER" content="7 days" />
+	<meta http-equiv="Content-Language" content="ru, fr, en" />
+
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[if IE]>
+<link rel="stylesheet" media="screen" type="text/css" title="Disposition" href="../dispositionIE.css" />
+<![endif]-->
+<!--[if !IE]><-->
+<link rel="stylesheet" media="screen" type="text/css" title="Disposition" href="../dispositionFF.css" />
+<link rel="icon" type="image/jpeg" href="../images/logo/logo_ico.jpg" />
+<!--><![endif]-->
+<!--[if lt IE 7.]>
+<script type="text/javascript" src="sleight.js"></script>
+<![endif]-->
+</head>
+
+<body><div id="all">
+
+<script type="text/javascript" src="../saison.js"></script>	
+<div id="banniere"><img id="bann_img" src="../images/bannieres/
+		<?php 
+		if( (isset($_SESSION['bann_form']) && $_SESSION['bann_form'] != "") || isset($_POST['bann_form'])) 
+			{if (isset($_POST['bann_form'])) {$_SESSION['bann_form']=$_POST['bann_form'];}
+			 $saison=$_SESSION['bann_form'];
+			 switch ($saison) 
+			 {	case "saison1": 
+					echo "ban_daviaz_800.png"; break;
+				case "saison2": 
+					echo "ban_vevey_800.png"; break;
+				case "saison3": 
+					echo "ban_moritz_800.png"; break;
+				case "saison4": 
+					echo "ban_choex_800.png"; break;
+			 }
+			} 
+		else {echo "ban_moritz_800.png";}
+		?> " alt="banniereTJM" onclick="change_saison();"/></div>
+
+<form id="skritii" method="post" action=" <?php echo $_SERVER['SCRIPT_NAME'];?> ">
+<fieldset><input id="bann_form" type="hidden" name="bann_form" value="" /></fieldset>
+<fieldset><input id="fond_form" type="hidden" name="fond_form" value="" /></fieldset>
+</form>
+<!--Voyages organises en Suisse (romande) pour touristes russophones-->
+
+<table><tr>
+<td><div id="langues"><?php include("../langues.php"); ?></div></td>
+<td><div id='logo'><img src='../images/logo/logo/bleu150.png' alt='logo' /></div></td>
+</tr></table>
